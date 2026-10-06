@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contactformulier van Sergio Mendez." />
+  <title>Contact – Sergio Mendez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Ga naar inhoud</a>
+
+  <nav aria-label="Hoofdnavigatie">
+    <div class="container">
+      <a class="logo" href="index.html">Sergio Mendez</a>
+      <ul>
+        <li><a href="index.html">Wie ben ik</a></li>
+        <li><a href="projects.html">Projecten</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <h1>Contact</h1>
+    <p>Stuur me een bericht. Ik reageer zo snel mogelijk.</p>
+  </header>
+
+  <main id="main-content">
+
+    <section>
+      <h2>Stuur een bericht</h2>
+
+      <form class="formulier" id="contact-formulier" novalidate>
+
+        <div class="formulier-veld">
+          <label for="naam">Naam</label>
+          <input
+            type="text"
+            id="naam"
+            name="naam"
+            autocomplete="name"
+            aria-describedby="naam-fout"
+          />
+          <p class="foutmelding" id="naam-fout" role="alert">Vul je naam in.</p>
+        </div>
+
+        <div class="formulier-veld">
+          <label for="email">E-mailadres</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            aria-describedby="email-fout"
+          />
+          <p class="foutmelding" id="email-fout" role="alert">Vul een geldig e-mailadres in (bijvoorbeeld naam@domein.nl).</p>
+        </div>
+
+        <div class="formulier-veld">
+          <label for="bericht">Bericht</label>
+          <textarea
+            id="bericht"
+            name="bericht"
+            aria-describedby="bericht-fout"
+          ></textarea>
+          <p class="foutmelding" id="bericht-fout" role="alert">Je bericht moet minimaal 20 tekens bevatten.</p>
+        </div>
+
+        <button type="submit">Verstuur</button>
+
+      </form>
+
+      <div class="bevestiging" id="bevestiging" role="status">
+        Je bericht is verstuurd. Bedankt, ik neem zo snel mogelijk contact met je op.
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sergio Mendez</p>
+  </footer>
+
+  <script src="js/contact.js"></script>
+
+</body>
+</html>

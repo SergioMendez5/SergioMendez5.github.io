@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio van Sergio Mendez – software developer in opleiding." />
   <title>Wie ben ik – Sergio Mendez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,20 +15,50 @@
   <a class="skip-link" href="#main-content">Ga naar inhoud</a>
 
   <nav aria-label="Hoofdnavigatie">
-    <a class="logo" href="index.html">Sergio Mendez</a>
-    <ul>
-      <li><a href="index.html" aria-current="page">Wie ben ik</a></li>
-      <li><a href="projects.html">Projecten</a></li>
-      <li><a href="blog.html">Blog</a></li>
-    </ul>
+    <div class="container">
+      <a class="logo" href="index.html">Sergio Mendez</a>
+      <ul>
+        <li><a href="index.html" aria-current="page">Wie ben ik</a></li>
+        <li><a href="projects.html">Projecten</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
   </nav>
+
+  <header class="page-header">
+    <div class="header-profiel">
+      <img
+        src="images/sergio.jpg"
+        alt="Foto van Sergio Mendez"
+        class="profiel-foto"
+      />
+      <div>
+        <h1>Sergio Mendez</h1>
+        <p>Software developer in opleiding &mdash; ROC, Software Development</p>
+      </div>
+    </div>
+  </header>
 
   <main id="main-content">
 
-    <header class="page-header">
-      <h1>Wie ben ik</h1>
-      <p>Hoi, ik ben Sergio Mendez – software developer in opleiding.</p>
-    </header>
+    <section>
+      <h2>Vaardigheden</h2>
+      <p>Talen, tools en concepten die ik gebruik of aan het leren ben:</p>
+      <ul class="vaardigheden">
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>Git &amp; GitHub</li>
+        <li>Responsive Design</li>
+        <li>Toegankelijkheid (WCAG)</li>
+        <li>VS Code</li>
+        <li>Command Line</li>
+        <li>SQL (basis)</li>
+      </ul>
+    </section>
 
     <section>
       <h2>Over mij</h2>
@@ -41,27 +74,40 @@
     </section>
 
     <section>
-      <h2>Vaardigheden</h2>
-      <p>Talen, tools en concepten die ik gebruik of aan het leren ben:</p>
-      <ul class="vaardigheden">
-        <li>HTML5</li>
-        <li>CSS3</li>
-        <li>JavaScript</li>
-        <li>Git &amp; GitHub</li>
-        <li>Responsive Design</li>
-        <li>Toegankelijkheid (WCAG)</li>
-        <li>VSCode</li>
-        <li>Command Line</li>
-        <li>SQL (basis)</li>
-      </ul>
+      <h2>Achtergrond</h2>
+      <p>
+        Ik ben opgegroeid met een interesse in technologie en begon als tiener
+        met kleine scriptjes en simpele websites. Nu richt ik me op complete
+        webapplicaties.
+      </p>
+      <p>
+        Momenteel volg ik de opleiding <strong>Software Development</strong>
+        aan het ROC. Elk semester werk ik aan praktijkopdrachten die
+        aansluiten op de industrie.
+      </p>
     </section>
 
     <section>
       <h2>Doelen</h2>
       <p>
         Ik wil mijn vaardigheden als software developer verder ontwikkelen en
-        uiteindelijk een carrière opbouwen.
+        uiteindelijk een carrière opbouwen in de IT.
       </p>
+    </section>
+
+    <section id="weer-sectie">
+      <h2>Weer vandaag</h2>
+      <div id="weer-inhoud" class="weer-blok">
+        <p>Weerbericht wordt geladen...</p>
+      </div>
+    </section>
+
+    <section id="nieuws-sectie">
+      <h2>Tech-nieuws</h2>
+      <p>De meest populaire tech-artikelen op dit moment via Hacker News.</p>
+      <ul id="nieuws-lijst" class="nieuws-lijst">
+        <li>Nieuws laden...</li>
+      </ul>
     </section>
 
   </main>
@@ -69,6 +115,9 @@
   <footer>
     <p>&copy; 2026 Sergio Mendez</p>
   </footer>
+
+  <script src="js/weer.js"></script>
+  <script src="js/nieuws.js"></script>
 
 </body>
 </html>

@@ -1,47 +1,61 @@
 /* Portfolio – Sergio Mendez */
 
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* ── Reset ── */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ── Basis ── */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-  color: #222222;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #f0f4f8;
+  color: #1a1a2e;
+  line-height: 1.75;
 }
 
 a {
-  color: #0055cc;
+  color: #1d4ed8;
 }
 
 a:hover {
   text-decoration: none;
 }
 
-/* Skip-link */
+/* ── Container: centreert de inhoud ── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Skip-link ── */
 .skip-link {
   position: absolute;
   top: -999px;
   left: 1rem;
-  background: #0055cc;
+  background: #1d4ed8;
   color: #ffffff;
   padding: 0.5rem 1rem;
+  z-index: 100;
 }
 
 .skip-link:focus {
   top: 1rem;
 }
 
-/* Navigatie */
+/* ── Navigatie – volle breedte ── */
 nav {
-  background-color: #222222;
-  padding: 0.75rem 1rem;
+  background-color: #1a1a2e;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+nav .container {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -49,19 +63,23 @@ nav {
 
 nav .logo {
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 1.1rem;
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 nav ul a {
-  color: #dddddd;
+  color: #c7d2e7;
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 nav ul a:hover,
@@ -70,46 +88,107 @@ nav ul a[aria-current="page"] {
   text-decoration: underline;
 }
 
-/* Paginakop */
+/* ── Profielfoto in header ── */
+.header-profiel {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profiel-foto {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  flex-shrink: 0;
+}
+
+.header-tekst h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.header-tekst p {
+  font-size: 1.05rem;
+  color: #bfdbfe;
+}
+
+/* ── Paginakop – volle breedte ── */
 header.page-header {
-  background-color: #ffffff;
-  border-bottom: 2px solid #cccccc;
-  padding: 2rem 0;
-  margin-bottom: 2rem;
+  background-color: #1d4ed8;
+  width: 100%;
+  padding: 3rem 2rem 2.5rem;
+  margin-bottom: 3rem;
+  max-width: 100%;
 }
 
-header.page-header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.4rem;
+header.page-header > * {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-header.page-header p {
-  color: #555555;
-}
-
-/* Main */
+/* ── Main ── */
 main {
-  padding: 2rem 0;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
 }
 
-/* Secties */
+/* ── Secties ── */
 section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
 }
 
 section h2 {
-  font-size: 1.4rem;
-  border-bottom: 2px solid #222222;
-  padding-bottom: 0.3rem;
-  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  border-bottom: 3px solid #1d4ed8;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
 }
 
 section p {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
   max-width: 70ch;
+  color: #374151;
 }
 
-/* Blokkenraster */
+/* ── Filterknoppen ── */
+.filter-knoppen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-knoppen button {
+  background-color: #ffffff;
+  border: 2px solid #1d4ed8;
+  color: #1d4ed8;
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', Arial, sans-serif;
+  border-radius: 4px;
+}
+
+.filter-knoppen button:hover {
+  background-color: #eff6ff;
+}
+
+.filter-knoppen button.actief {
+  background-color: #1d4ed8;
+  color: #ffffff;
+}
+
+/* ── Blokkenraster ── */
 .blokken {
   display: grid;
   grid-template-columns: 1fr;
@@ -119,71 +198,233 @@ section p {
 
 .blok {
   background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #1d4ed8;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
 
-/* Grote projectblokken */
 .blok--groot {
   padding: 2rem;
-  min-height: 320px;
+  min-height: 280px;
 }
 
 .blok .label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  color: #666666;
-  margin-bottom: 0.4rem;
+  letter-spacing: 0.07em;
+  color: #1d4ed8;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .blok h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
 }
 
 .blok p {
-  color: #444444;
+  color: #4b5563;
   font-size: 0.95rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .blok .meta {
-  font-size: 0.85rem;
-  color: #666666;
+  font-size: 0.82rem;
+  color: #9ca3af;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
 }
 
-/* Vaardighedenlijst */
+/* ── Vaardighedenlijst ── */
 .vaardigheden {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
   list-style: none;
+  margin-top: 0.75rem;
 }
 
 .vaardigheden li {
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  padding: 0.3rem 0.75rem;
-  font-size: 0.9rem;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 4px;
 }
 
-/* Footer */
+/* ── Contactformulier ── */
+.formulier {
+  max-width: 560px;
+}
+
+.formulier-veld {
+  margin-bottom: 1.5rem;
+}
+
+.formulier-veld label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+}
+
+.formulier-veld input,
+.formulier-veld textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  padding: 0.65rem 0.85rem;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  color: #1a1a2e;
+  border-radius: 4px;
+}
+
+.formulier-veld input:focus,
+.formulier-veld textarea:focus {
+  outline: 2px solid #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.formulier-veld textarea {
+  height: 130px;
+  resize: vertical;
+}
+
+.foutmelding {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.foutmelding.zichtbaar {
+  display: block;
+}
+
+.formulier button[type="submit"] {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  padding: 0.7rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', Arial, sans-serif;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.formulier button[type="submit"]:hover {
+  background-color: #1e40af;
+}
+
+.bevestiging {
+  background-color: #f0fdf4;
+  border: 1px solid #86efac;
+  padding: 1rem 1.25rem;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  display: none;
+}
+
+.bevestiging.zichtbaar {
+  display: block;
+}
+
+/* ── Weer-blok ── */
+.weer-blok {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #1d4ed8;
+  padding: 1.5rem;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.weer-blok p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.weer-bron {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* ── Nieuws-lijst ── */
+.nieuws-lijst {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.nieuws-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #1d4ed8;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nieuws-titel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.nieuws-titel a {
+  color: #1a1a2e;
+  text-decoration: none;
+}
+
+.nieuws-titel a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.nieuws-context {
+  font-size: 0.83rem;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+.nieuws-meta {
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+/* ── Footer – volle breedte ── */
 footer {
-  background-color: #222222;
-  color: #dddddd;
+  background-color: #1a1a2e;
+  color: #c7d2e7;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem 0;
   font-size: 0.875rem;
   margin-top: 2rem;
+  width: 100%;
 }
 
-/* Tablet: blog twee kolommen */
+/* ── Tablet (≥ 600px) ── */
 @media (min-width: 600px) {
   .blokken--twee-kolommen {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* ── Desktop (≥ 1024px) ── */
 @media (min-width: 1024px) {
   .blokken--twee-kolommen {
     grid-template-columns: repeat(3, 1fr);
