@@ -1,6 +1,3 @@
-// projects.js – Sergio Mendez
-// Rendert de projectenlijst vanuit een array en filtert op categorie.
-
 const projecten = [
   {
     titel: "Portfoliosite",
@@ -24,7 +21,6 @@ const projecten = [
   },
 ];
 
-// Maakt één projectblok als <li> element
 const maakProjectBlok = (project) => {
   const li = document.createElement("li");
   li.className = "blok blok--groot";
@@ -55,7 +51,6 @@ const maakProjectBlok = (project) => {
   return li;
 };
 
-// Rendert de gefilterde projecten in de lijst
 const renderProjecten = (filter) => {
   const lijst = document.getElementById("projecten-lijst");
   lijst.innerHTML = "";
@@ -69,22 +64,17 @@ const renderProjecten = (filter) => {
   });
 };
 
-// Zet event listeners op de filterknoppen
 const initFilter = () => {
   const knoppen = document.querySelectorAll(".filter-knoppen button");
 
   knoppen.forEach((knop) => {
     knop.addEventListener("click", () => {
-      // Verwijder actieve stijl van alle knoppen
       knoppen.forEach((k) => k.classList.remove("actief"));
-      // Zet actieve stijl op de geklikte knop
       knop.classList.add("actief");
-      // Render de projecten met het gekozen filter
       renderProjecten(knop.dataset.filter);
     });
   });
 };
 
-// Start: toon alle projecten en activeer de filterknoppen
 renderProjecten("alle");
 initFilter();

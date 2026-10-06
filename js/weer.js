@@ -1,10 +1,6 @@
-// weer.js – Sergio Mendez
-// Haalt het actuele weerbericht op via de Open-Meteo API (open-meteo.com).
-// Toont: omstandigheden, temperatuur, gevoelstemperatuur, luchtvochtigheid, windsnelheid.
-
 const weerBlok = document.getElementById("weer-inhoud");
 
-// Vertaalt de WMO-weercode naar een begrijpelijke tekst met emoji
+// WMO weercodes naar leesbare tekst
 const omschrijvingVanCode = (code) => {
   const codes = {
     0:  "☀️ Helder",
@@ -30,7 +26,6 @@ const omschrijvingVanCode = (code) => {
   return codes[code] ?? "Onbekend";
 };
 
-// Toont een foutmelding in het weer-blok
 const toonWeerFout = (melding) => {
   weerBlok.innerHTML = "";
   const p = document.createElement("p");
@@ -38,7 +33,6 @@ const toonWeerFout = (melding) => {
   weerBlok.appendChild(p);
 };
 
-// Haalt weerdata op via Open-Meteo en toont het resultaat
 const haalWeerOp = (latitude, longitude) => {
   const url =
     `https://api.open-meteo.com/v1/forecast` +
@@ -48,9 +42,7 @@ const haalWeerOp = (latitude, longitude) => {
 
   fetch(url)
     .then((antwoord) => {
-      if (!antwoord.ok) {
-        throw new Error("API fout");
-      }
+      if (!antwoord.ok) throw new Error("API fout");
       return antwoord.json();
     })
     .then((data) => {
@@ -59,11 +51,11 @@ const haalWeerOp = (latitude, longitude) => {
       weerBlok.innerHTML = "";
 
       const rijen = [
-        { label: "Omstandigheden",      waarde: omschrijvingVanCode(weathercode) },
-        { label: "Temperatuur",          waarde: `${temperature_2m} °C` },
-        { label: "Gevoelstemperatuur",   waarde: `${apparent_temperature} °C` },
-        { label: "Luchtvochtigheid",     waarde: `${relativehumidity_2m}%` },
-        { label: "Windsnelheid",         waarde: `${windspeed_10m} km/u` },
+        { label: "Omstandigheden",    waarde: omschrijvingVanCode(weathercode) },
+        { label: "Temperatuur",        waarde: `${temperature_2m} °C` },
+        { label: "Gevoelstemperatuur", waarde: `${apparent_temperature} °C` },
+        { label: "Luchtvochtigheid",   waarde: `${relativehumidity_2m}%` },
+        { label: "Windsnelheid",       waarde: `${windspeed_10m} km/u` },
       ];
 
       rijen.forEach(({ label, waarde }) => {
@@ -85,7 +77,6 @@ const haalWeerOp = (latitude, longitude) => {
     });
 };
 
-// Vraagt de locatie op via de browser en start het ophalen van weerdata
 const initWeer = () => {
   if (!navigator.geolocation) {
     toonWeerFout("Je browser ondersteunt geen locatiebepaling.");
@@ -98,12 +89,8 @@ const initWeer = () => {
   weerBlok.appendChild(laadTekst);
 
   navigator.geolocation.getCurrentPosition(
-    (positie) => {
-      haalWeerOp(positie.coords.latitude, positie.coords.longitude);
-    },
-    () => {
-      toonWeerFout("Locatie kon niet worden bepaald. Geef toestemming in je browser.");
-    }
+    (positie) => haalWeerOp(positie.coords.latitude, positie.coords.longitude),
+    () => toonWeerFout("Locatie kon niet worden bepaald. Geef toestemming in je browser.")
   );
 };
 

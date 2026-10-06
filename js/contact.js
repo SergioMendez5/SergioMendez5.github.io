@@ -1,28 +1,21 @@
-// contact.js – Sergio Mendez
-// Valideert het contactformulier vóór verzending.
-// Drie velden: naam (verplicht), e-mail (geldig formaat), bericht (min. 20 tekens).
-
 const formulier = document.getElementById("contact-formulier");
 const bevestiging = document.getElementById("bevestiging");
 
-// Toont een foutmelding bij een veld
 const toonFout = (veldId, foutId) => {
   document.getElementById(foutId).classList.add("zichtbaar");
   document.getElementById(veldId).setAttribute("aria-invalid", "true");
 };
 
-// Verbergt een foutmelding bij een veld
 const verbergFout = (veldId, foutId) => {
   document.getElementById(foutId).classList.remove("zichtbaar");
   document.getElementById(veldId).removeAttribute("aria-invalid");
 };
 
-// Controleert of het e-mailadres een geldig formaat heeft
+// Controleer geldig e-mailformaat
 const isGeldigEmail = (waarde) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(waarde);
 };
 
-// Valideert alle velden en geeft true terug als alles klopt
 const valideerFormulier = () => {
   const naam = document.getElementById("naam").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -54,7 +47,6 @@ const valideerFormulier = () => {
   return geldig;
 };
 
-// Verwerkt het formulier bij verzending
 formulier.addEventListener("submit", (gebeurtenis) => {
   gebeurtenis.preventDefault();
 

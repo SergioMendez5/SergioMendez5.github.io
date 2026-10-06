@@ -1,11 +1,6 @@
-// nieuws.js – Sergio Mendez
-// Haalt de top 5 tech-artikelen op via de Hacker News API (hacker-news.firebaseio.com).
-// Toont per artikel: titel, domeinnaam als context, punten en aantal reacties.
-
 const nieuwsLijst = document.getElementById("nieuws-lijst");
 const AANTAL = 5;
 
-// Toont een foutmelding in de nieuwssectie
 const toonNieuwsFout = (melding) => {
   nieuwsLijst.innerHTML = "";
   const li = document.createElement("li");
@@ -13,7 +8,7 @@ const toonNieuwsFout = (melding) => {
   nieuwsLijst.appendChild(li);
 };
 
-// Haalt de domeinnaam uit een URL (bijvoorbeeld "github.com")
+// Haal domeinnaam op uit URL
 const haalDomein = (url) => {
   try {
     return new URL(url).hostname.replace("www.", "");
@@ -22,7 +17,6 @@ const haalDomein = (url) => {
   }
 };
 
-// Haalt de details van één artikel op en voegt het toe aan de lijst
 const voegArtikelToe = (id) => {
   return fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
     .then((antwoord) => antwoord.json())
@@ -30,7 +24,6 @@ const voegArtikelToe = (id) => {
       const li = document.createElement("li");
       li.className = "nieuws-item";
 
-      // Titel als link
       const titel = document.createElement("p");
       titel.className = "nieuws-titel";
 
@@ -45,15 +38,11 @@ const voegArtikelToe = (id) => {
         titel.textContent = artikel.title;
       }
 
-      // Domeinnaam als kleine context-zin
       const domein = artikel.url ? haalDomein(artikel.url) : null;
       const context = document.createElement("p");
       context.className = "nieuws-context";
-      context.textContent = domein
-        ? `Bron: ${domein}`
-        : "Geplaatst op Hacker News";
+      context.textContent = domein ? `Bron: ${domein}` : "Geplaatst op Hacker News";
 
-      // Statistieken: punten en reacties
       const meta = document.createElement("p");
       meta.className = "nieuws-meta";
       meta.textContent = `${artikel.score} punten · ${artikel.descendants ?? 0} reacties`;
@@ -61,12 +50,10 @@ const voegArtikelToe = (id) => {
       li.appendChild(titel);
       li.appendChild(context);
       li.appendChild(meta);
-
       nieuwsLijst.appendChild(li);
     });
 };
 
-// Haalt de top verhalen op en toont de eerste 5
 const initNieuws = () => {
   nieuwsLijst.innerHTML = "";
   const laadItem = document.createElement("li");
@@ -75,15 +62,12 @@ const initNieuws = () => {
 
   fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
     .then((antwoord) => {
-      if (!antwoord.ok) {
-        throw new Error("API fout");
-      }
+      if (!antwoord.ok) throw new Error("API fout");
       return antwoord.json();
     })
     .then((ids) => {
       nieuwsLijst.innerHTML = "";
-      const topIds = ids.slice(0, AANTAL);
-      return Promise.all(topIds.map((id) => voegArtikelToe(id)));
+      return Promise.all(ids.slice(0, AANTAL).map((id) => voegArtikelToe(id)));
     })
     .catch(() => {
       toonNieuwsFout("Het nieuws kon niet worden geladen. Probeer het later opnieuw.");
